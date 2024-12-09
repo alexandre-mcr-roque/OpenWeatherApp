@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="OpenWeatherApp.Pages.SearchCitiesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="Select a City"
+    NavigationPage.HasNavigationBar="False">
+    <Grid RowDefinitions="Auto,*,Auto">
+        <VerticalStackLayout Grid.Row="0" Margin="20,5">
+            <Entry
+                x:Name="EntrySearchCity"
+                toolkit:SetFocusOnEntryCompletedBehavior.NextElement="{Reference EntrySearchCity}"
+                ClearButtonVisibility="WhileEditing"
+                FontSize="Medium"
+                Placeholder="Search for a city..." />
+        </VerticalStackLayout>
+        <AbsoluteLayout
+            Grid.Row="1"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <VerticalStackLayout
+                x:Name="ViewNoResults"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                IsVisible="False"
+                VerticalOptions="CenterAndExpand">
+                <Label
+                    HorizontalTextAlignment="Center"
+                    Text="No results"
+                    TextColor="{AppThemeBinding Light={StaticResource Gray300},
+                                                Dark={StaticResource Gray500}}" />
+            </VerticalStackLayout>
+            <CollectionView
+                x:Name="CollectionCities"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                SelectionChanged="CollectionCities_SelectionChanged"
+                SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Padding="0,6" Spacing="1">
+                            <Label
+                                Padding="5,0"
+                                FontSize="Medium"
+                                Text="{Binding Name}" />
+                            <Label
+                                Padding="7,0"
+                                Text="{Binding CountryName}"
+                                TextColor="{AppThemeBinding Light={StaticResource Gray300},
+                                                            Dark={StaticResource Gray500}}" />
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroupList>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray900}}" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Normal" />
+                                    </VisualStateGroup>
+                                </VisualStateGroupList>
+                            </VisualStateManager.VisualStateGroups>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </AbsoluteLayout>
+
+        <VerticalStackLayout
+            Grid.Row="2"
+            Padding="20"
+            Spacing="10">
+            <Button
+                x:Name="BtnSelect"
+                Clicked="Select"
+                HorizontalOptions="FillAndExpand"
+                IsEnabled="False"
+                Text="Select" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

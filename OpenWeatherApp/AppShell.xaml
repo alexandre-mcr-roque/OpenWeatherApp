@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="OpenWeatherApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="OpenWeatherApp"
+    Shell.FlyoutBehavior="Flyout">
+    <Shell.FlyoutHeader>
+        <Image x:Name="FlyoutImage" Aspect="AspectFill" />
+    </Shell.FlyoutHeader>
+
+    <ShellContent
+        x:Name="HomeItem"
+        Title="Home"
+        FlyoutIcon="{AppThemeBinding Light='home',
+                                     Dark='home_white'}" />
+
+    <ShellContent
+        x:Name="CityItem"
+        Title="City"
+        FlyoutIcon="{AppThemeBinding Light='city',
+                                     Dark='city_white'}" />
+
+    <ShellContent
+        x:Name="SettingsItem"
+        Title="Settings"
+        FlyoutIcon="{AppThemeBinding Light='settings',
+                                     Dark='settings_white'}" />
+    <ShellContent
+        x:Name="AboutItem"
+        Title="About"
+        FlyoutIcon="{AppThemeBinding Light='about',
+                                     Dark='about_white'}" />
+</Shell>

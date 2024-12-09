@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="OpenWeatherApp.Pages.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Home">
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid
+            x:Name="LayoutData"
+            Margin="10"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            RowDefinitions="Auto,Auto,Auto">
+            <Label
+                x:Name="TitleLocation"
+                Grid.Row="0"
+                Margin="0,30"
+                FontAttributes="Bold"
+                FontSize="36"
+                HorizontalTextAlignment="Center"
+                VerticalOptions="CenterAndExpand" />
+
+            <RoundRectangle Grid.Row="1" Style="{StaticResource Divider}" />
+
+            <VerticalStackLayout
+                Grid.Row="2"
+                Margin="0,15"
+                Spacing="3">
+                <HorizontalStackLayout Spacing="2" VerticalOptions="StartAndExpand">
+                    <Image
+                        x:Name="IconWeather"
+                        Aspect="AspectFit"
+                        HeightRequest="70"
+                        VerticalOptions="CenterAndExpand" />
+                    <Label
+                        x:Name="LabelTemperature"
+                        FontSize="40"
+                        VerticalOptions="CenterAndExpand" />
+                </HorizontalStackLayout>
+
+                <VerticalStackLayout Margin="30,0" VerticalOptions="StartAndExpand">
+                    <Label
+                        x:Name="LabelFeelsLike"
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        VerticalOptions="CenterAndExpand" />
+                    <Label
+                        x:Name="LabelWeatherDescription"
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        VerticalOptions="CenterAndExpand" />
+                    <Label
+                        x:Name="LabelWindDescription"
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        VerticalOptions="CenterAndExpand" />
+                </VerticalStackLayout>
+
+                <Grid Margin="20" ColumnDefinitions="Auto,*">
+                    <RoundRectangle
+                        Grid.Column="0"
+                        MaximumHeightRequest="{x:Static x:Double.PositiveInfinity}"
+                        Style="{StaticResource Divider}"
+                        VerticalOptions="FillAndExpand"
+                        WidthRequest="1" />
+
+                    <VerticalStackLayout Grid.Column="1" Margin="25,5">
+                        <HorizontalStackLayout Spacing="20">
+                            <HorizontalStackLayout Spacing="5">
+                                <Image
+                                    x:Name="IconWindDirection"
+                                    Aspect="AspectFit"
+                                    HeightRequest="15"
+                                    Source="wind_direction"
+                                    WidthRequest="15" />
+                                <Label x:Name="LabelWind" />
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="5">
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="15"
+                                    Source="pressure"
+                                    WidthRequest="15" />
+                                <Label x:Name="LabelPressure" />
+                            </HorizontalStackLayout>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="20">
+                            <Label x:Name="LabelHumidity" />
+                            <Label x:Name="LabelDewPoint" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="20">
+                            <Label x:Name="LabelVisibility" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Grid>
+            </VerticalStackLayout>
+        </Grid>
+
+        <!--  Shows up whenever the app fails to load data  -->
+        <VerticalStackLayout
+            x:Name="LayoutFailed"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            IsVisible="False"
+            VerticalOptions="CenterAndExpand">
+
+            <Label
+                FontSize="20"
+                HorizontalOptions="CenterAndExpand"
+                Text="Failed to load data" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            VerticalOptions="CenterAndExpand">
+            <ActivityIndicator x:Name="LoadingIndicator" />
+        </VerticalStackLayout>
+    </AbsoluteLayout>
+</ContentPage>

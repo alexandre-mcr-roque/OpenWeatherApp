@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet
+    x:Class="OpenWeatherApp.Views.CityFilterView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:the49="https://schemas.the49.com/dotnet/2023/maui">
+    <Grid Margin="10" RowDefinitions="Auto,Auto,Auto">
+        <Label
+            Grid.Row="0"
+            Margin="3,0,0,0"
+            FontSize="Large"
+            Text="Filter"
+            TextColor="{AppThemeBinding Light={StaticResource Black},
+                                        Dark={StaticResource White}}" />
+        <RoundRectangle Grid.Row="1" Style="{StaticResource Divider}" />
+        <ScrollView
+            Grid.Row="2"
+            Margin="0,5,0,0"
+            HeightRequest="180">
+            <CollectionView x:Name="CountriesFilter">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout Spacing="4">
+                            <CheckBox
+                                CheckedChanged="UpdateSelected"
+                                IsChecked="{Binding IsChecked, Mode=OneWayToSource}"
+                                VerticalOptions="CenterAndExpand" />
+                            <Label Text="{Binding Country}" VerticalOptions="CenterAndExpand" />
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </Grid>
+</the49:BottomSheet>

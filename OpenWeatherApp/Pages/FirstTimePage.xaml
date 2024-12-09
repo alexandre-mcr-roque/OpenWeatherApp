@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="OpenWeatherApp.Pages.FirstTimePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="FirstTimePage"
+    NavigationPage.HasNavigationBar="False">
+    <AbsoluteLayout>
+        <VerticalStackLayout
+            Padding="20"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            Spacing="15"
+            VerticalOptions="CenterAndExpand">
+            <Label
+                FontAutoScalingEnabled="True"
+                FontSize="50"
+                HorizontalOptions="CenterAndExpand"
+                Text="Hello!"
+                VerticalOptions="CenterAndExpand" />
+            <Label
+                FontSize="Medium"
+                HorizontalTextAlignment="Center"
+                Text="Looks like this is your first time using this app"
+                VerticalOptions="CenterAndExpand" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Padding="20"
+            AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            HorizontalOptions="FillAndExpand"
+            Spacing="20"
+            VerticalOptions="EndAndExpand">
+            <Label
+                FontSize="15"
+                HorizontalOptions="CenterAndExpand"
+                Text="Tap Next to continue"
+                TextColor="{AppThemeBinding Light={StaticResource Gray300},
+                                            Dark={StaticResource Gray500}}" />
+            <Button
+                Clicked="Continue"
+                HorizontalOptions="FillAndExpand"
+                Text="Next" />
+        </VerticalStackLayout>
+    </AbsoluteLayout>
+</ContentPage>

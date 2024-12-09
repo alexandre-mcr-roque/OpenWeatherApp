@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="OpenWeatherApp.Pages.DefaultCitiesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Select a City"
+    NavigationPage.HasNavigationBar="False">
+    <Grid RowDefinitions="Auto,*,Auto">
+        <Grid
+            Grid.Row="0"
+            Margin="20,5"
+            ColumnDefinitions="Auto,*,Auto"
+            ColumnSpacing="10">
+            <HorizontalStackLayout
+                Grid.Column="0"
+                HeightRequest="25"
+                VerticalOptions="Center"
+                WidthRequest="25" />
+            <Label
+                Grid.Column="1"
+                FontSize="Title"
+                HorizontalTextAlignment="Center"
+                Text="Select a city"
+                VerticalOptions="Center" />
+            <HorizontalStackLayout
+                Grid.Column="2"
+                HeightRequest="25"
+                VerticalOptions="Center"
+                WidthRequest="25">
+                <ImageButton
+                    x:Name="ImgBtnFilter"
+                    Aspect="AspectFit"
+                    Clicked="ShowFilter"
+                    Source="{AppThemeBinding Light='filter',
+                                             Dark='filter_white'}" />
+            </HorizontalStackLayout>
+        </Grid>
+        <ScrollView Grid.Row="1">
+            <CollectionView
+                x:Name="CollectionCities"
+                SelectionChanged="CollectionCities_SelectionChanged"
+                SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Padding="0,6" Spacing="1">
+                            <Label
+                                Padding="5,0"
+                                FontSize="Medium"
+                                Text="{Binding Name}" />
+                            <Label
+                                Padding="7,0"
+                                Text="{Binding CountryName}"
+                                TextColor="{AppThemeBinding Light={StaticResource Gray300},
+                                                            Dark={StaticResource Gray500}}" />
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroupList>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray900}}" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Normal" />
+                                    </VisualStateGroup>
+                                </VisualStateGroupList>
+                            </VisualStateManager.VisualStateGroups>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+
+        <VerticalStackLayout
+            Grid.Row="2"
+            Padding="20"
+            Spacing="10">
+            <Label
+                Padding="5"
+                FontSize="Medium"
+                HorizontalTextAlignment="Center"
+                Text="Search for more options"
+                TextColor="{StaticResource Primary}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="SearchMoreOptions" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Button
+                x:Name="BtnSelect"
+                Clicked="Select"
+                HorizontalOptions="FillAndExpand"
+                IsEnabled="False"
+                Text="Select" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

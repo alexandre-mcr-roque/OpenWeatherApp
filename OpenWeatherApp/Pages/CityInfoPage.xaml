@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="OpenWeatherApp.Pages.CityInfoPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="City Information">
+    <Grid RowDefinitions="*,Auto">
+
+        <VerticalStackLayout Grid.Row="0" Margin="20">
+            <Label
+                x:Name="LabelCityName"
+                FontAttributes="Bold"
+                FontSize="36" />
+            <Label
+                x:Name="LabelCountryName"
+                Margin="10,0"
+                FontSize="24"
+                TextColor="{AppThemeBinding Light={StaticResource Gray300},
+                                            Dark={StaticResource Gray500}}" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Grid.Row="2"
+            Margin="20"
+            Spacing="10">
+            <Button
+                x:Name="BtnChangeCity"
+                Clicked="ChangeCity"
+                HorizontalOptions="FillAndExpand"
+                Text="Change City" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

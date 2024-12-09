@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="OpenWeatherApp.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Settings">
+    <VerticalStackLayout>
+        <CollectionView
+            x:Name="CollectionSettings"
+            Margin="0,30"
+            ItemTemplate="{AppThemeBinding Light={StaticResource lightTemplate},
+                                           Dark={StaticResource darkTemplate}}">
+            <CollectionView.Resources>
+                <ResourceDictionary>
+                    <!--  Light mode  -->
+                    <DataTemplate x:Key="lightTemplate">
+                        <HorizontalStackLayout
+                            Padding="20,15"
+                            HorizontalOptions="FillAndExpand"
+                            Spacing="15">
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Command}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image
+                                Aspect="AspectFit"
+                                Source="{Binding ImageSource}"
+                                VerticalOptions="CenterAndExpand" />
+                            <Label
+                                FontSize="Medium"
+                                Text="{Binding Text}"
+                                VerticalOptions="CenterAndExpand" />
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+
+                    <!--  Dark mode  -->
+                    <DataTemplate x:Key="darkTemplate">
+                        <HorizontalStackLayout
+                            Padding="20,15"
+                            HorizontalOptions="FillAndExpand"
+                            Spacing="15">
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Command}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image
+                                Aspect="AspectFit"
+                                Source="{Binding ImageSource, StringFormat='{0}_white'}"
+                                VerticalOptions="CenterAndExpand" />
+                            <Label
+                                FontSize="Medium"
+                                Text="{Binding Text}"
+                                VerticalOptions="CenterAndExpand" />
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </ResourceDictionary>
+            </CollectionView.Resources>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
