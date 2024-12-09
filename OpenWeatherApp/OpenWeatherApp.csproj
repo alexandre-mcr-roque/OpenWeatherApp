@@ -67,8 +67,12 @@
 	  <None Remove="Resources\Images\city_white.svg" />
 	  <None Remove="Resources\Images\filter.svg" />
 	  <None Remove="Resources\Images\filter_white.svg" />
+	  <None Remove="Resources\Images\github.svg" />
+	  <None Remove="Resources\Images\github_white.svg" />
 	  <None Remove="Resources\Images\home.svg" />
 	  <None Remove="Resources\Images\home_white.svg" />
+	  <None Remove="Resources\Images\linkedin.svg" />
+	  <None Remove="Resources\Images\linkedin_white.svg" />
 	  <None Remove="Resources\Images\measure.svg" />
 	  <None Remove="Resources\Images\measure_white.svg" />
 	  <None Remove="Resources\Images\openweather_flyout_fall.png" />

@@ -14,16 +14,36 @@
                 Source="openweather_seeklogo_dark.png"
                 VerticalOptions="FillAndExpand" />
         </StackLayout>
-        <VerticalStackLayout Grid.Row="1" Spacing="30">
-            <Rectangle Style="{StaticResource Divider}" />
-            <Label
-                x:Name="LabelVersion"
-                Margin="30,0"
-                FontSize="Medium" />
-            <Label
-                x:Name="LabelAuthor"
-                Margin="30,0"
-                FontSize="Medium" />
-        </VerticalStackLayout>
+
+        <Grid Grid.Row="1" RowDefinitions="*,Auto">
+
+            <VerticalStackLayout Grid.Row="0" Spacing="30">
+                <Rectangle Style="{StaticResource Divider}" />
+                <Label
+                    x:Name="LabelVersion"
+                    Margin="30,0"
+                    FontSize="Medium" />
+                <Label
+                    x:Name="LabelAuthor"
+                    Margin="30,0"
+                    FontSize="Medium" />
+            </VerticalStackLayout>
+            <HorizontalStackLayout
+                Grid.Row="1"
+                Margin="40"
+                HorizontalOptions="CenterAndExpand"
+                Spacing="40">
+                <ImageButton
+                    Aspect="AspectFit"
+                    Clicked="OpenLinkedIn"
+                    Source="{AppThemeBinding Light='linkedin',
+                                             Dark='linkedin_white'}" />
+                <ImageButton
+                    Aspect="AspectFit"
+                    Clicked="OpenGitHub"
+                    Source="{AppThemeBinding Light='github',
+                                             Dark='github_white'}" />
+            </HorizontalStackLayout>
+        </Grid>
     </Grid>
 </ContentPage>
